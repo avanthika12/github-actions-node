@@ -29,3 +29,12 @@ jobs:
     - name: Build the Angular application
       run: npm run build --if-present
       working-directory: ./hello-world-project
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test the application
+      run: npm test 
+      continue-on-error: true
+      

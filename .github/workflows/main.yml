@@ -7,15 +7,18 @@ on:
 jobs:
   build:
 
-    runs-on: self-hosted # Specifies that the job should run on a self-hosted runner
-
+    runs-on: self-hosted 
+    strategy:
+      matrix:
+        node-version: [18, 20]
+        
     steps:
     - uses: actions/checkout@v4
 
-    - name: Use Node.js 20
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: hello-world-project/package-lock.json
 
@@ -24,5 +27,5 @@ jobs:
       working-directory: ./hello-world-project 
 
     - name: Build the Angular application
-      run: npm run build
+      run: npm run build --if-present
       working-directory: ./hello-world-project

@@ -1,6 +1,3 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: Angular CI
 
 on:
@@ -14,11 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Verify Directory Structure
+      shell: powershell
       run: |
         echo "Listing root directory"
-        ls -al
+        Get-ChildItem
         echo "Listing hello-world-project directory"
-        ls -al hello-world-project
+        Get-ChildItem hello-world-project
 
     - name: Use Node.js 20.x
       uses: actions/setup-node@v4
@@ -37,4 +35,3 @@ jobs:
     - name: Run tests
       run: npm test
       working-directory: ./hello-world-project # Adjust this to the actual path of your project directory
-

@@ -13,6 +13,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Verify Directory Structure
+      run: |
+        echo "Listing root directory"
+        ls -al
+        echo "Listing hello-world-project directory"
+        ls -al hello-world-project
+
     - name: Use Node.js 20.x
       uses: actions/setup-node@v4
       with:

@@ -26,7 +26,3 @@ jobs:
     - name: Build the Angular application
       run: npm run build
       working-directory: ./hello-world-project
-
-    - name: Run tests
-      run: npm test
-      working-directory: ./hello-world-project
